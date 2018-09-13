@@ -25,4 +25,3 @@ public class Height {
                 " " + "Количество студ. выше среднего = " + countOfStudentsUnderSrRost);
     }
 }
-
