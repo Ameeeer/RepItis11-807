@@ -17,7 +17,7 @@ public class Height {
         double srRost = rostSum / n;
         int countOfStudentsUnderSrRost = 0;
         for (int i = 0; i < n; i++) {
-            if (srRost < height[i]){
+            if (srRost < height[i]) {
                 countOfStudentsUnderSrRost++;
             }
         }
