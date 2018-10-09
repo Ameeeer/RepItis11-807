@@ -1,6 +1,7 @@
 package Java;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 //Вариант 2
 public class ClassTestTask01 {
@@ -76,5 +77,22 @@ public class ClassTestTask01 {
            sumOfRecurs(sum+=arrNum%10);
         }
         return sum;*/
+    }
+}
+class ClassTestTask02{
+    public static void main(String[] args) {
+        /*Scanner sc = new Scanner(System.in);
+        String str = sc.next();*/
+        String str = "2+3-5-7";
+        int sum = str.charAt(0)-48;
+        for (int i = 1; i < str.length(); i=i+2) {
+            if (str.charAt(i)=='+'){
+                sum+=str.charAt(i+1)-48;
+            }
+            else if (str.charAt(i)=='-'){
+                sum-=str.charAt(i+1)-48;
+            }
+        }
+        System.out.println(sum);
     }
 }
