@@ -1,5 +1,6 @@
 package Java;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -7,20 +8,20 @@ import java.util.Scanner;
 public class ClassTestTask01 {
 
     public static void main(String[] args) {
-        /*Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int[][] matrix = new int[n][n];
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                matrix[i][j] = sc.nextInt();
-            }
-        }*/
+//        Scanner sc = new Scanner(System.in);
+//        int n = sc.nextInt();
+//        int[][] matrix = new int[n][n];
+//        for (int i = 0; i < n; i++) {
+//            for (int j = 0; j < n; j++) {
+//                matrix[i][j] = sc.nextInt();
+//            }
+//        }
         int[] arr = {101, 202, 300};
         int sum = 0;
         sortArr(arr);
         System.out.println(Arrays.toString(arr));
-        //System.out.println(Arrays.toString(getSideDiagonalAsVector(matrix)));
-        //System.out.println(Arrays.toString(mult(matrix, arr)));
+//        System.out.println(Arrays.toString(getSideDiagonalAsVector(matrix)));
+//        System.out.println(Arrays.toString(mult(matrix, arr)));
 
     }
 
@@ -65,25 +66,24 @@ public class ClassTestTask01 {
 
     static int sumOfRecurs(int arrNum) {
         int sum = 0;
-        while (arrNum > 0){
-            sum+=arrNum%10;
-            arrNum = arrNum/10;
-        }
-        return sum;
-        /*if (arrNum / 1 == 0) {
+//        while (arrNum > 0){
+//            sum+=arrNum%10;
+//            arrNum = arrNum/10;
+//        }
+//        return sum;
+        if (arrNum / 1 == 0) {
             return 0;
         } else {
-            arrNum = arrNum/10;
-           sumOfRecurs(sum+=arrNum%10);
+           sum+= sumOfRecurs(arrNum%10);
         }
-        return sum;*/
+        return sum;
     }
 }
 class ClassTestTask02{
     public static void main(String[] args) {
-        /*Scanner sc = new Scanner(System.in);
-        String str = sc.next();*/
-        String str = "2+3-5-7";
+//        Scanner sc = new Scanner(System.in);
+//        String str = sc.next();
+        String str = "2-3+5-7";
         int sum = str.charAt(0)-48;
         for (int i = 1; i < str.length(); i=i+2) {
             if (str.charAt(i)=='+'){
