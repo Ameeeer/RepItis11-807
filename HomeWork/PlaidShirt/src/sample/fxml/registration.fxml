@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="440.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.Controller">
+   <children>
+      <TextField layoutX="136.0" layoutY="193.0" prefHeight="27.0" prefWidth="328.0" promptText="Secondname">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </TextField>
+      <TextField fx:id="firstName" layoutX="136.0" layoutY="151.0" prefHeight="27.0" prefWidth="328.0" promptText="Firstname">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </TextField>
+      <TextField layoutX="137.0" layoutY="230.0" prefHeight="27.0" prefWidth="328.0" promptText="Login">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </TextField>
+      <TextField layoutX="137.0" layoutY="271.0" prefHeight="27.0" prefWidth="328.0" promptText="Password">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </TextField>
+      <Button layoutX="137.0" layoutY="315.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="126.0" text="Registration">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </Button>
+      <ImageView fitHeight="93.0" fitWidth="111.0" layoutX="254.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../w128h1281385326478die.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
