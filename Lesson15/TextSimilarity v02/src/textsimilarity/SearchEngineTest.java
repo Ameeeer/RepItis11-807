@@ -2,10 +2,11 @@ package textsimilarity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class SearchEngineTest {
     public static void main(String[] args) {
-        SearchEngine se = new JaccardAnalyzeOnSearchEngine();
+        Scanner sc = new Scanner(System.in);
         TextProvider query = new SimpleTextProvider("Мама мыла");
         TextProvider tp1 = new SimpleTextProvider("Мама мыла раму");
         TextProvider tp2 = new SimpleTextProvider("Мама раму мыла");
@@ -16,9 +17,21 @@ public class SearchEngineTest {
         providers.add(tp3);
         providers.add(tp4);
         providers.add(tp2);
-        List<TextProvider> results = se.getSortedByRelevanceList(query, providers);
-        for (TextProvider tp : results) {
-            System.out.println(tp);
+        int x = sc.nextInt();
+        if (x == 1) {
+            JaccardAnalyze ja = (JaccardAnalyze) new JaccardAnalyze();
+            SearchEngine se = new SearchEngineImpl( ja);
+            List<TextProvider> results = se.getSortedByRelevanceList(query,providers);
+            for (TextProvider tp : results) {
+                System.out.println(tp);
+            }
         }
+//        if (x == 0) {
+//            SearchEngine se = new SearchEngineImpl();
+//            List<TextProvider> results = se.getSortedByRelevanceList(query, providers);
+//            for (TextProvider tp : results) {
+//                System.out.println(tp);
+//            }
+//        }
     }
 }
