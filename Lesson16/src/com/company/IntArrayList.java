@@ -115,12 +115,15 @@ public class IntArrayList implements IntList {
 
     @Override
     public int indexOf(int value) {
+        int k=0;
         for (int i = 0; i < count; i++) {
             if (elements[i] == value) {
                 return i;
-            } else if (i == count) {
-                throw new IllegalArgumentException("no Such Value");
             }
+            k++;
+        }
+        if (k == count) {
+            throw new IllegalArgumentException("no Such Value");
         }
         return -1;
     }
