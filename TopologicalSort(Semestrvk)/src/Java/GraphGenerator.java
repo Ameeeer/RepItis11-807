@@ -2,58 +2,59 @@ package Java;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.util.Random;
-import java.util.Scanner;
 
 public class GraphGenerator {
     public static final int INFINITY = 10000000;
     public static final int COUNT_OF_GRAPHS = 1;
-    public static final int COUNT_OF_VERTEXES = 10;
-    public static int interations = 0;
-    public static PrintWriter pw1;
-    public static PrintWriter pw2;
+    public static int countOfVertexes;
 
 //    public static void main(String[] args) throws FileNotFoundException {
 //        generator();
 //    }
 
-    public static void alogrithmForArray() {
-
-    }
-
-    public void infArray(int[] d) {
-        d[0] = 0;
-        for (int i = 1; i < d.length; i++) {
-            d[i] = INFINITY;
-        }
+    public GraphGenerator(int countOfVertexes) {
+        this.countOfVertexes = countOfVertexes;
     }
 
     public static int getCountOfVertexes() {
-        return COUNT_OF_VERTEXES;
+        return countOfVertexes;
     }
 
     public void generator() throws FileNotFoundException {
-        PrintWriter pw = new PrintWriter("Data.txt");
-        for (int i = 0; i < COUNT_OF_GRAPHS; i++) {
-            for (int j = 0; j < COUNT_OF_VERTEXES; j++) {
-                for (int l = 0; l < COUNT_OF_VERTEXES; l++) {
-                    if (j == l) {
-                        pw.print(0);
-                        pw.print(" ");
-                    } else {
-                        Random random = new Random();
-                        int weight = (int) ((Math.random() * (2 + 1)) - 1);
-                        pw.print(weight);
-                        pw.print(" ");
-                    }
+        PrintWriter pw1 = new PrintWriter("Data.txt");
+        int[][] vert = new int[countOfVertexes][countOfVertexes];
+        for (int j = 0; j < countOfVertexes; j++) {
+            for (int l = 0; l < countOfVertexes; l++) {
+                if (j == l) {
+                    vert[l][l] = 0;
+                    pw1.print(0);
+                    pw1.print(" ");
+                } else {
+                    int weight = (int) ((Math.random() * (2 + 1)) - 1);
+                    vert[j][l] = weight;
+                    pw1.print(vert[j][l]);
+                    pw1.print(" ");
                 }
-                pw.print('\n');
             }
-            pw.print("-");
-            pw.print('\n');
+            pw1.print('\n');
         }
-        pw.close();
-
+        pw1.close();
+        PrintWriter pw2 = new PrintWriter("Data.txt");
+        for (int j = 0; j < countOfVertexes; j++) {
+            for (int l = 0; l < countOfVertexes; l++) {
+                if (vert[j][l] == 1 && vert[j][l] == vert[l][j]) {
+                    vert[l][j] = 0;
+                } else if (vert[j][l] == 0 && vert[j][l] == vert[l][j]) {
+                    vert[l][j] = 1;
+                    vert[l][l] = 0;
+                }
+                pw2.print(vert[j][l]);
+                pw2.print(" ");
+            }
+            pw2.print('\n');
+        }
+        pw2.print("-");
+        pw2.close();
     }
 }
 
