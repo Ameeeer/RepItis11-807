@@ -11,6 +11,7 @@ import java.util.Stack;
 // Этот класс представляет ориентированный граф с использованием смежности
 // представление списка
 public class Graph {
+    private static int iterCount;
     private int V;   // Количество вершин
     private LinkedList<Integer> adj[]; // Список смежности
     private static int[][] vertexes;
@@ -21,6 +22,7 @@ public class Graph {
 
     //Конструктор
     Graph(int v) {
+        this.iterCount = 0;
         V = v;
         adj = new LinkedList[v];
         vertexes = new int[v][v];
@@ -45,8 +47,10 @@ public class Graph {
         Iterator<Integer> it = adj[v].iterator();
         while (it.hasNext()) {
             i = it.next();
-            if (!visited[i])
+            if (!visited[i]) {
                 topologicalSortUtil(i, visited, stack);
+                iterCount++;
+            }
         }
 
         // Вставить текущую вершину в стек, в котором хранится результат
@@ -67,13 +71,17 @@ public class Graph {
         // Топологическая сортировка, начиная со всех вершин
         // по одному
         for (int i = 0; i < V; i++)
-            if (visited[i] == false)
+            if (visited[i] == false) {
+                iterCount++;
                 topologicalSortUtil(i, visited, stack);
+            }
 
         // Распечатать содержимое стека
-        while (stack.empty() == false)
+        while (stack.empty() == false) {
             System.out.print(1 + ((int) stack.pop()) + " ");
+        }
     }
+
     public static void main(String args[]) throws FileNotFoundException {
         GraphGenerator graphGenerator = new GraphGenerator(100);
         int countvertexes = GraphGenerator.getCountOfVertexes();
@@ -81,7 +89,6 @@ public class Graph {
         Graph g = new Graph(countvertexes);
         Scanner sc = new Scanner(new FileInputStream("Data.txt"));
         int count = 1;
-        boolean cyclic = false;
         while (sc.hasNextInt()) {
             int value = sc.nextInt();
             int line = 1;
@@ -94,17 +101,18 @@ public class Graph {
             if (count == countvertexes) {
                 line++;
                 count = 1;
-            }
-
-        }System.out.println("Following is a Topological " +
-                    "sort of the given graph");
-        long x = System.currentTimeMillis();
-            g.topologicalSort();
-            long k = System.currentTimeMillis();
-            System.out.println();
-            System.out.println('\n' + (double) (k - x) + " msec");
+            };
         }
-
+        System.out.println("Following is a Topological " +
+                "sort of the given graph");
+        long x = System.currentTimeMillis();
+        g.topologicalSort();
+        long k = System.currentTimeMillis();
+        System.out.println();
+        System.out.println('\n' + (double) (k - x) + " msec");
+        System.out.println('\n' + "Количество итераций = " + iterCount);
     }
+
+}
 
 
