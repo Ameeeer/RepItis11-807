@@ -83,20 +83,19 @@ public class Graph {
     }
 
     public static void main(String args[]) throws FileNotFoundException {
-        GraphGenerator graphGenerator = new GraphGenerator(100);
+        GraphGenerator graphGenerator = new GraphGenerator(50);
         int countvertexes = GraphGenerator.getCountOfVertexes();
         graphGenerator.generator();
         Graph g = new Graph(countvertexes);
         Scanner sc = new Scanner(new FileInputStream("Data.txt"));
         int count = 1;
         while (sc.hasNextInt()) {
+        int line = 1;
             int value = sc.nextInt();
-            int line = 1;
             if (value == 0) {
-                count++;
+            count++;
             } else if (value == 1) {
                 g.addEdge(line, count);
-                count++;
             }
             if (count == countvertexes) {
                 line++;
